@@ -9,6 +9,7 @@ int num6=0;
 int num7=0;
 
 int tot=0;
+int yn;
 
 void setup()
 {
@@ -18,6 +19,11 @@ void setup()
 void draw()
 {
   background(0);
+  for( yn = 860; yn>50; yn+=50){
+    	int num = 0;
+    	num+=50;
+    	text(num,600,yn);
+    	}
   for(int y = 0; y<500; y+=55){
     for(int x = 0; x< 500; x+=55){
       Die d1 = new Die(x,y);
@@ -125,6 +131,7 @@ class Die //models one single dice cube
     text("Num of 6:  "+num6,0,720);
     text("Num of 7:  "+num7,0,740);
     
+    textSize(12);
     rect(620,880 - num1,30,num1);
     rect(660,880 - num2,30,num2);
     rect(700,880 - num3,30,num3);
@@ -132,6 +139,15 @@ class Die //models one single dice cube
     rect(780,880 - num5,30,num5);
     rect(820,880 - num6,30,num6);
     rect(860,880 - num7,30,num7);
+    stroke(100);
+    strokeWeight(5);
+    text("1's",630,900);
+    text("2's",670,900);
+    text("3's",710,900);
+    text("4's",750,900);
+    text("5's",790,900);
+    text("6's",830,900);
+    text("7's",870,900);
     
   }
   void show()
@@ -144,6 +160,7 @@ class Die //models one single dice cube
     strokeWeight(2);
     line(600,50,600,900);
     line(580,880,980,880);
-    
+   
+
   }
 }
