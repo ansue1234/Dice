@@ -8,6 +8,7 @@ int num5=0;
 int num6=0;
 int num7=0;
 
+int num;
 int tot=0;
 int yn;
 
@@ -18,22 +19,27 @@ void setup()
 {
   size(900,900);
   noLoop();
-   // for( yn = 860; yn>50; yn+=50){
-   //  	int num = 0;
-   //  	num+=50;
-   //  	text(num,600,yn);
-   //  }
+
 }
 void draw()
 {
-  background(0);
- 
+  background(0,0,255);
+  
 
   for(int y = 0; y<500; y+=55){
     for(int x = 0; x< 500; x+=55){
       Die d1 = new Die(x,y);
       d1.show();
       d1.roll();
+      for( int yn=50; yn<900; yn+=40){
+	     	int num;
+	     	
+
+
+	     	stroke(255);
+	     	text(yn,570,yn);
+	     	System.out.println(yn);
+  		}
       }
     }
   }
@@ -154,7 +160,7 @@ class Die //models one single dice cube
     text("6's",830,900);
     text("7's",870,900);
 
-    
+     
     
    
    
@@ -165,7 +171,7 @@ class Die //models one single dice cube
   {
     strokeWeight(2);
     stroke(0);
-    fill(255);
+    fill(0,255,0);
     rect(xd,yd,50,50);
     stroke(255);
     strokeWeight(2);
@@ -173,7 +179,7 @@ class Die //models one single dice cube
     line(600,50,600,900);
     line(580,880,980,880);
     
-    
+   
 
   }
 }
