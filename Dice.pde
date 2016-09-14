@@ -11,9 +11,7 @@ int num7=0;
 int num;
 int tot=0;
 int yn;
-
-
-
+int nT,n1,n2,n3,n4,n5,n6,n7;
 
 void setup()
 {
@@ -24,32 +22,42 @@ void setup()
 void draw()
 {
   background(0,0,255);
-  
-
   for(int y = 0; y<500; y+=55){
     for(int x = 0; x< 500; x+=55){
       Die d1 = new Die(x,y);
       d1.show();
       d1.roll();
       for( int yn=50; yn<900; yn+=40){
-	     	int num;
-	     	
-
-
-	     	stroke(255);
-	     	text(yn,570,yn);
-	     	System.out.println(yn);
-  		}
+          if(yn<450){
+            num = yn+(2*(450 - yn));
+          }else if(yn==450){
+            num = yn;
+          }else{
+            num = yn-(2*(yn-450));
+          }
+  	     	stroke(255);
+  	     	text(num,570,yn+5);
+          strokeWeight(1);
+          line(595,yn,605,yn);
+    		}
       }
     }
-  }
-  
+}
 
 void mousePressed()
 {
   redraw();
   tot++;
+  nT=0;
+  n1 = 0;
+  n2 = 0;
+  n3 = 0;
+  n4 = 0;
+  n5 = 0;
+  n6 = 0;
+  n7 = 0;
 }
+
 class Die //models one single dice cube
 {
   int xd;
@@ -59,9 +67,7 @@ class Die //models one single dice cube
   Die(int x, int y) //constructor
   {
     xd=x;
-    yd=y;
-    
-    
+    yd=y; 
   }
   void roll()
   {
@@ -72,12 +78,16 @@ class Die //models one single dice cube
       point(xd+25,yd+25);
       num1++;
       numTot+=1;
+      nT+=1;
+      n1++;
     }else if(face == 1){
       stroke(0);
       point(xd+15,yd+15);
       point(xd+35,yd+35);
       num2++;
       numTot+=2;
+      nT+=2;
+      n2++;
     }else if(face == 2){
       stroke(0);
       point(xd+15,yd+15);
@@ -85,6 +95,8 @@ class Die //models one single dice cube
       point(xd+25,yd+25);
       num3++;
       numTot+=3;
+      nT+=3;
+      n3++;
     }else if(face == 3){
       stroke(0);
       point(xd+15,yd+15);
@@ -93,6 +105,8 @@ class Die //models one single dice cube
       point(xd+15,yd+35);
       num4++;
       numTot+=4;
+      nT+=4;
+      n4++;
     }else if(face == 4){
       stroke(0);
       point(xd+15,yd+15);
@@ -102,6 +116,8 @@ class Die //models one single dice cube
       point(xd+25,yd+25);
       num5++;
       numTot+=5;
+      nT+=5;
+      n5++;
     }else if(face == 5){
       stroke(0);
       point(xd+15,yd+15);
@@ -112,6 +128,8 @@ class Die //models one single dice cube
       point(xd+35,yd+15);
       num6++;
       numTot+=6;
+      nT+=6;
+      n6++;
     }else if(face == 6){
       stroke(0);
       stroke(255,0,0);
@@ -124,16 +142,22 @@ class Die //models one single dice cube
       point(xd+25,yd+40);
       num7++;
       numTot+=7;
+      nT+=7;
+      n7++;
     }
-    
-   
     fill(0);
     noStroke();
-    rect(0,560,400,400);
+    rect(0,560,550,400);
     fill(255);
     strokeWeight(5);
     textSize(20);
+    text("Rolls: "+tot,0,800);
+    textSize(12);
     text("Total:"+numTot,0,580);
+    text("     Total of:",0,600);
+    text("This roll: ",110,580);
+    textSize(11);
+    text("Total:"+nT,110,600);
     text("Num of 1:  "+num1,0,620);
     text("Num of 2:  "+num2,0,640);
     text("Num of 3:  "+num3,0,660);
@@ -141,6 +165,13 @@ class Die //models one single dice cube
     text("Num of 5:  "+num5,0,700);
     text("Num of 6:  "+num6,0,720);
     text("Num of 7:  "+num7,0,740);
+    text(n1,110,620);
+    text(n2,110,640);
+    text(n3,110,660);
+    text(n4,110,680);
+    text(n5,110,700);
+    text(n6,110,720);
+    text(n7,110,740);
     
     textSize(12);
     rect(620,880 - num1,30,num1);
@@ -159,13 +190,20 @@ class Die //models one single dice cube
     text("5's",790,900);
     text("6's",830,900);
     text("7's",870,900);
-
-     
     
-   
-   
-
+    fill(255);
+    line(100,580,100,900);
     
+    if(num1>850||num2>850||num3>850||num4>850||num5>850||num6>850||num7>850){
+      num1=0;
+      num2=0;
+      num3=0;
+      num4=0;
+      num5=0;
+      num6=0;
+      num7=0;
+      numTot=0;
+    }    
   }
   void show()
   {
@@ -173,13 +211,11 @@ class Die //models one single dice cube
     stroke(0);
     fill(0,255,0);
     rect(xd,yd,50,50);
-    stroke(255);
+    fill(255);
     strokeWeight(2);
-
+    textSize(16);
+    text("Num of rolls",570,30);
     line(600,50,600,900);
     line(580,880,980,880);
-    
-   
-
   }
 }
