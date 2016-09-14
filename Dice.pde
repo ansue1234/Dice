@@ -27,19 +27,19 @@ void draw()
       Die d1 = new Die(x,y);
       d1.show();
       d1.roll();
-      for( int yn=50; yn<900; yn+=40){
-          if(yn<450){
-            num = yn+(2*(450 - yn));
-          }else if(yn==450){
+      for( int yn=50; yn<850; yn+=40){
+          if(yn<440){
+            num = yn+(2*(440 - yn));
+          }else if(yn==425){
             num = yn;
           }else{
-            num = yn-(2*(yn-450));
+            num = yn-(2*(yn-440));
           }
   	     	stroke(255);
   	     	text(num,570,yn+5);
           strokeWeight(1);
           line(595,yn,605,yn);
-    		}
+    	}
       }
     }
 }
@@ -194,7 +194,7 @@ class Die //models one single dice cube
     fill(255);
     line(100,580,100,900);
     
-    if(num1>850||num2>850||num3>850||num4>850||num5>850||num6>850||num7>850){
+    if(num1>830||num2>830||num3>830||num4>830||num3>830||num6>830||num7>830){
       num1=0;
       num2=0;
       num3=0;
@@ -203,6 +203,15 @@ class Die //models one single dice cube
       num6=0;
       num7=0;
       numTot=0;
+
+      nT=0;
+	  n1 = 0;
+	  n2 = 0;
+	  n3 = 0;
+	  n4 = 0;
+	  n5 = 0;
+	  n6 = 0;
+	  n7 = 0;
     }    
   }
   void show()
@@ -214,7 +223,7 @@ class Die //models one single dice cube
     fill(255);
     strokeWeight(2);
     textSize(16);
-    text("Num of rolls",570,30);
+    text("Num of rolls total",570,30);
     line(600,50,600,900);
     line(580,880,980,880);
   }
